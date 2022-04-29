@@ -59,7 +59,7 @@ class CartScreen extends StatelessWidget {
                           height: screenHeight * .19,
                           child: Column(
                             children: [
-                              Text("قيد المراجعة"),
+                              const Text("قيد المراجعة"),
                               Row(
                                 children: <Widget>[
                                   CircleAvatar(

@@ -11,6 +11,8 @@ const kProductPhone = 'productPhone';
 const kProductLatitude = 'productLatitude';
 const kProductLongitude = 'productLongitude';
 const kProductImage = 'productImage';
+const kProductPapers = 'productPapers';
+
 const kProductCategory = 'productCategory';
 const kProductsCollection = 'Products';
 const kUnActiveColor = Color(0xFFC1BDB8);

@@ -7,6 +7,7 @@ class Product {
   String pId;
   int pQuantity;
   int pPhone;
+  String pPapers;
   double plongitude;
   double pLatitude;
   String pProductDuration;
@@ -16,6 +17,7 @@ class Product {
       this.pName,
       this.pPhone,
       this.pCategory,
+      this.pPapers,
       this.pDescription,
       this.pProductDuration,
       this.pImage,

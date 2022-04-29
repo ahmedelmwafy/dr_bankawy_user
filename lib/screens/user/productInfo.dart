@@ -3,14 +3,9 @@
 import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/order.dart';
 import 'package:dr_bankawy/models/product.dart';
-import 'package:dr_bankawy/provider/cartItem.dart';
-import 'package:dr_bankawy/services/auth.dart';
 import 'package:dr_bankawy/services/store.dart';
 import 'package:dr_bankawy/widgets/map.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ProductInfo extends StatefulWidget {
   static String id = 'ProductInfo';
@@ -42,17 +37,19 @@ class _ProductInfoState extends State<ProductInfo> {
             ),
             child: Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      product.pName,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w200),
-                    ),
-                    Text("نوع القرض \n" + product.pPrice),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        product.pName,
+                      ),
+                      Text(product.pDescription),
+                      const Text("قرض شخصي"),
+                    ],
+                  ),
                 ),
                 const Spacer(),
                 Expanded(
@@ -61,7 +58,7 @@ class _ProductInfoState extends State<ProductInfo> {
                     child: Image.network(
                       product.pImage,
                       height: MediaQuery.of(context).size.height * 0.2,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -82,30 +79,34 @@ class _ProductInfoState extends State<ProductInfo> {
               children: <Widget>[
                 const Text(
                   "معلومات عن القرض",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
-                ),
-                Text("نوع القرض \n" + product.pPrice),
-                Text(
-                  product.pName,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200),
                 ),
                 Text(
                   "الفائدة ${product.pDescription}",
                 ),
-                const SizedBox(
-                  height: 10,
+                Text("الفائدة :" + product.pPrice + " %" ?? ""),
+                const Text(
+                  "الضمان : تحويل موتبة",
                 ),
                 Text(
-                  "الضمان \n" + product.pProductDuration ?? "",
+                  "الاوراق المطلوبه" "\n" + product.pPapers ?? "",
+                  style: const TextStyle(
+                      // fontSize: 16,
+                      ),
                 ),
+                // Text(
+                //   "الضمان \n" + product.pProductDuration ?? "",
+                // ),
                 Text(
                   "الخط الساحن \n" + product.pPhone.toString() ?? "",
                 ),
-                Text(
-                  product.pDescription,
-                  style: const TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
+
+                // Text(
+                //   product.pDescription,
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //   ),
+                // ),
                 // const SizedBox(
                 //   height: 10,
                 // ),

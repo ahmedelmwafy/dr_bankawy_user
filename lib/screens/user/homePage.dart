@@ -105,6 +105,7 @@ class _HomePageState extends State<HomePage> {
                 pPhone: data[kProductPhone],
                 pImage: data[kProductImage],
                 // pQuantity: data[kProductImage],
+                pPapers: data[kProductPapers],
                 pLatitude: data[kProductLatitude],
                 plongitude: data[kProductLongitude],
                 pCategory: data[kProductCategory]));
@@ -162,15 +163,23 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Row(
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(products[index].pName ?? ""),
-                                Text(
-                                  products[index].pDescription ?? "",
-                                ),
-                                Text(products[index].pPrice ?? ""),
-                              ],
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                // mainAxisAlignment:
+                                //     MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(products[index].pName ?? ""),
+                                  Text(
+                                    products[index].pDescription ?? "",
+                                  ),
+                                  Text("الفائدة :" +
+                                          products[index].pPrice +
+                                          " %" ??
+                                      ""),
+                                ],
+                              ),
                             ),
                             const Spacer(),
                             Expanded(
@@ -180,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                                   products[index].pImage ?? "",
                                   height:
                                       MediaQuery.of(context).size.height * 0.2,
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ),
