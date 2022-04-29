@@ -65,7 +65,7 @@ class CartScreen extends StatelessWidget {
                                   CircleAvatar(
                                     radius: screenHeight * .15 / 2,
                                     backgroundImage:
-                                        NetworkImage(products[index].pLocation),
+                                        NetworkImage(products[index].pImage),
                                   ),
                                   Expanded(
                                     child: Row(

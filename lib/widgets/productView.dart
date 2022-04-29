@@ -26,7 +26,7 @@ Widget ProductsView(String pCategory, List<Product> allProducts) {
             Positioned.fill(
               child: Image(
                 fit: BoxFit.fill,
-                image: AssetImage(products[index].pLocation),
+                image: AssetImage(products[index].pImage),
               ),
             ),
             Positioned(
@@ -38,7 +38,8 @@ Widget ProductsView(String pCategory, List<Product> allProducts) {
                   height: 60,
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[

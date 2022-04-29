@@ -9,7 +9,7 @@ class Store {
     _firestore.collection(kProductsCollection).add({
       kProductName: product.pName,
       kProductDescription: product.pDescription,
-      kProductLocation: product.pLocation,
+      kProductImage: product.pImage,
       kProductCategory: product.pCategory,
       kProductPrice: product.pPrice
     });
@@ -50,7 +50,7 @@ class Store {
         kProductName: product.pName,
         kProductPrice: product.pPrice,
         kProductQuantity: product.pQuantity,
-        kProductLocation: product.pLocation,
+        kProductName: product.pImage,
         kProductCategory: product.pCategory
       });
     }

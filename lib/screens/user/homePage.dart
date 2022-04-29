@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        body: jacketView());
+        body: homePage());
   }
 
   @override
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
     _loggedUser = await _auth.getUser();
   }
 
-  Widget jacketView() {
+  Widget homePage() {
     return StreamBuilder<QuerySnapshot>(
       stream: _store.loadProducts(),
       builder: (context, snapshot) {
@@ -101,7 +101,12 @@ class _HomePageState extends State<HomePage> {
                 pPrice: data[kProductPrice],
                 pName: data[kProductName],
                 pDescription: data[kProductDescription],
-                pLocation: data[kProductLocation],
+                pProductDuration: data[kProductDuration],
+                pPhone: data[kProductPhone],
+                pImage: data[kProductImage],
+                // pQuantity: data[kProductImage],
+                pLatitude: data[kProductLatitude],
+                plongitude: data[kProductLongitude],
                 pCategory: data[kProductCategory]));
           }
 
@@ -160,9 +165,11 @@ class _HomePageState extends State<HomePage> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(products[index].pName),
-                                Text(products[index].pDescription),
-                                Text(products[index].pPrice),
+                                Text(products[index].pName ?? ""),
+                                Text(
+                                  products[index].pDescription ?? "",
+                                ),
+                                Text(products[index].pPrice ?? ""),
                               ],
                             ),
                             const Spacer(),
@@ -170,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.network(
-                                  products[index].pLocation,
+                                  products[index].pImage ?? "",
                                   height:
                                       MediaQuery.of(context).size.height * 0.2,
                                   fit: BoxFit.cover,
@@ -194,6 +201,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 /*
     
 */
@@ -203,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                     Positioned.fill(
                       child: Image(
                         fit: BoxFit.fill,
-                        image: NetworkImage(products[index].pLocation),
+                        image: NetworkImage(products[index].pImage),
                       ),
                     ),
                     Positioned(
@@ -234,3 +242,5 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 */
+
+                

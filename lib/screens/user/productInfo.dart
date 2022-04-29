@@ -3,6 +3,7 @@
 import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/provider/cartItem.dart';
+import 'package:dr_bankawy/widgets/map.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,7 +53,7 @@ class _ProductInfoState extends State<ProductInfo> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      product.pLocation,
+                      product.pImage,
                       height: MediaQuery.of(context).size.height * 0.2,
                       fit: BoxFit.cover,
                     ),
@@ -84,36 +85,24 @@ class _ProductInfoState extends State<ProductInfo> {
                     fontSize: 20,
                   ),
                 ),
-                const Text(
-                  "الفائدة \n" + "١٢٩",
-                  style: TextStyle(
+                Text(
+                  "الفائدة ${product.pDescription}",
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "الضمان \n" + "١٢٩",
-                  style: TextStyle(
+                Text(
+                  "الضمان \n" + product.pProductDuration ?? "",
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
-                const Text(
-                  "مدة القرض \n" + "١٢٩",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                const Text(
-                  "الخط الساحن \n" + "١٢٩",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                const Text(
-                  "اقرب فرع \n" + "١٢٩",
-                  style: TextStyle(
+                Text(
+                  "الخط الساحن \n" + product.pPhone.toString() ?? "",
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
@@ -123,13 +112,20 @@ class _ProductInfoState extends State<ProductInfo> {
                     fontSize: 16,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  product.pPrice,
-                  style: const TextStyle(
-                    fontSize: 20,
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Text(
+                //   product.pPrice,
+                //   style: const TextStyle(
+                //     fontSize: 20,
+                //   ),
+                // ),
+                SizedBox(
+                  height: 200,
+                  child: MapSample(
+                    latLng: product.pLatitude,
+                    long: product.plongitude,
                   ),
                 ),
                 const SizedBox(
