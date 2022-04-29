@@ -1,4 +1,5 @@
 import 'package:dr_bankawy/constants.dart';
+import 'package:dr_bankawy/models/order.dart';
 import 'package:dr_bankawy/models/product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -13,7 +14,16 @@ class Store {
       kProductCategory: product.pCategory,
       kProductPrice: product.pPrice
     });
-  }
+  } 
+  
+    addOrder(Order product) {
+    _firestore.collection(kOrders).add({
+      kUserEmail: product.oUserEmail,
+      kisAccepted: product.oIsAccepted,
+      kisReviewed: product.oIsReviewed,
+      kCreatedDate: product.oCreatedDate
+    });
+  } 
 
   Stream<QuerySnapshot> loadProducts() {
     return _firestore.collection(kProductsCollection).snapshots();

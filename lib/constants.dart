@@ -16,6 +16,13 @@ const kProductsCollection = 'Products';
 const kUnActiveColor = Color(0xFFC1BDB8);
 const kJackets = 'jackets';
 const kOrders = 'Orders';
+// for orders
+const kProductId = 'product_id';
+const kUserEmail = 'user_email';
+const kisAccepted = 'isAccepted';
+const kisReviewed = 'isReviewed';
+const kCreatedDate = 'created_date';
+
 const kOrderDetails = 'OrderDetails';
 const kTotallPrice = 'TotallPrice';
 const kAddress = 'Address';

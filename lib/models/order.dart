@@ -1,6 +1,14 @@
 class Order {
   String documentId;
-  int totallPrice;
-  String address;
-  Order({this.totallPrice, this.address, this.documentId});
+  String oUserEmail;
+  bool oIsAccepted;
+  bool oIsReviewed;
+  int oCreatedDate;
+
+  Order(
+      {this.documentId,
+      this.oUserEmail,
+      this.oIsAccepted,
+      this.oIsReviewed,
+      this.oCreatedDate});
 }

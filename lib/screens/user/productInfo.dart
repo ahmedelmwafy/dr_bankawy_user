@@ -1,9 +1,14 @@
 // ignore_for_file: deprecated_member_use, avoid_print, file_names
 
 import 'package:dr_bankawy/constants.dart';
+import 'package:dr_bankawy/models/order.dart';
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/provider/cartItem.dart';
+import 'package:dr_bankawy/services/auth.dart';
+import 'package:dr_bankawy/services/store.dart';
 import 'package:dr_bankawy/widgets/map.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +21,8 @@ class ProductInfo extends StatefulWidget {
 }
 
 class _ProductInfoState extends State<ProductInfo> {
-  int _quantity = 1;
+  Store store = Store();
+
   @override
   Widget build(BuildContext context) {
     Product product = ModalRoute.of(context).settings.arguments;
@@ -81,30 +87,18 @@ class _ProductInfoState extends State<ProductInfo> {
                 Text("نوع القرض \n" + product.pPrice),
                 Text(
                   product.pName,
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
                 ),
                 Text(
                   "الفائدة ${product.pDescription}",
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
                   "الضمان \n" + product.pProductDuration ?? "",
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
                 ),
                 Text(
                   "الخط الساحن \n" + product.pPhone.toString() ?? "",
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
                 ),
                 Text(
                   product.pDescription,
@@ -139,7 +133,16 @@ class _ProductInfoState extends State<ProductInfo> {
                           borderRadius: BorderRadius.circular(20)),
                       color: kSecondaryColor,
                       onPressed: () {
-                        addToCart(context, product);
+                        store.addOrder(Order(
+                          oUserEmail: "userEmail",
+                          oIsAccepted: false,
+                          oIsReviewed: false,
+                          oCreatedDate:
+                              DateTime.now().toUtc().millisecondsSinceEpoch,
+                        ));
+                        Scaffold.of(context).showSnackBar(const SnackBar(
+                          content: Text('لقدم تم التقديم مسبقا'),
+                        ));
                       },
                       child: const Text(
                         'قم بالتقديم علي القرض',
@@ -157,43 +160,5 @@ class _ProductInfoState extends State<ProductInfo> {
         ],
       ),
     );
-  }
-
-  subtract() {
-    if (_quantity > 1) {
-      setState(() {
-        _quantity--;
-        print(_quantity);
-      });
-    }
-  }
-
-  add() {
-    setState(() {
-      _quantity++;
-      print(_quantity);
-    });
-  }
-
-  void addToCart(context, product) {
-    CartItem cartItem = Provider.of<CartItem>(context, listen: false);
-    product.pQuantity = _quantity;
-    bool exist = false;
-    var productsInCart = cartItem.products;
-    for (var productInCart in productsInCart) {
-      if (productInCart.pName == product.pName) {
-        exist = true;
-      }
-    }
-    if (exist) {
-      Scaffold.of(context).showSnackBar(const SnackBar(
-        content: Text('لقدم تم التقديم مسبقا'),
-      ));
-    } else {
-      cartItem.addProduct(product);
-      Scaffold.of(context).showSnackBar(const SnackBar(
-        content: Text('تم التقديم علي القرض بنجاح'),
-      ));
-    }
   }
 }
