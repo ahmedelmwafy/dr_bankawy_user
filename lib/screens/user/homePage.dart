@@ -49,25 +49,25 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             children: <Widget>[
               ListTile(
-                title: Text('Home'),
+                title: const Text('Home'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('About'),
+                title: const Text('About'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('Contact'),
+                title: const Text('Contact'),
                 onTap: () {
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('Logout'),
+                title: const Text('Logout'),
                 onTap: () async {
                   SharedPreferences pref =
                       await SharedPreferences.getInstance();

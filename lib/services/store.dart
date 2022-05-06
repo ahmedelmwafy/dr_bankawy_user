@@ -61,7 +61,7 @@ class Store {
         kProductName: product.pName,
         kProductPrice: product.pPrice,
         kProductQuantity: product.pQuantity,
-        kProductName: product.pImage,
+        kProductImage: product.pImage,
         kProductCategory: product.pCategory
       });
     }
