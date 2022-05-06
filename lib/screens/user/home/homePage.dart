@@ -14,7 +14,7 @@ import 'package:dr_bankawy/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../functions.dart';
+import '../../../functions.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'HomePage';

@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use, unused_local_variable, must_be_immutable
 
 import 'package:dr_bankawy/provider/modelHud.dart';
-import 'package:dr_bankawy/screens/user/homePage.dart';
+import 'package:dr_bankawy/screens/user/home/homePage.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
 import 'package:dr_bankawy/widgets/cutsom_logo.dart';
 import 'package:flutter/material.dart';
