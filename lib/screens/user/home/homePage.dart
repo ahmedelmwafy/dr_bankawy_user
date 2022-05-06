@@ -5,7 +5,7 @@ import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/drawer/view.dart';
 import 'package:dr_bankawy/screens/user/CartScreen.dart';
-import 'package:dr_bankawy/screens/user/productInfo.dart';
+import 'package:dr_bankawy/screens/user/product/productInfo.dart';
 import 'package:dr_bankawy/services/store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

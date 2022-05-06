@@ -7,7 +7,7 @@ import 'package:dr_bankawy/screens/login/login_screen.dart';
 import 'package:dr_bankawy/screens/sign_up/signup_screen.dart';
 import 'package:dr_bankawy/screens/user/cart/cartScreen.dart';
 import 'package:dr_bankawy/screens/user/home/homePage.dart';
-import 'package:dr_bankawy/screens/user/productInfo.dart';
+import 'package:dr_bankawy/screens/user/product/productInfo.dart';
 import 'package:dr_bankawy/widgets/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

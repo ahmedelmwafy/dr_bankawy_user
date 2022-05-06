@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, file_names
 
 import 'package:dr_bankawy/models/product.dart';
-import 'package:dr_bankawy/screens/user/productInfo.dart';
+import 'package:dr_bankawy/screens/user/product/productInfo.dart';
 import 'package:flutter/material.dart';
 
 import '../functions.dart';
