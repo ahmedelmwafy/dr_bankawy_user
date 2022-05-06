@@ -2,6 +2,7 @@
 
 import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/product.dart';
+import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/login_screen.dart';
 import 'package:dr_bankawy/screens/user/CartScreen.dart';
 import 'package:dr_bankawy/screens/user/productInfo.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dr_bankawy/services/auth.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../functions.dart';
@@ -28,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   FirebaseUser _loggedUser;
   final _store = Store();
   List<Product> _products;
+  String userEmail = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,12 +89,15 @@ class _HomePageState extends State<HomePage> {
 
   getCurrenUser() async {
     _loggedUser = await _auth.getUser();
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    userEmail = _loggedUser.email ?? pref.getString(kKeepMyEmail);
   }
 
   Widget homePage() {
     return StreamBuilder<QuerySnapshot>(
       stream: _store.loadProducts(),
       builder: (context, snapshot) {
+        Provider.of<UserData>(context).addUserEmail(userEmail);
         if (snapshot.hasData) {
           List<Product> products = [];
           for (var doc in snapshot.data.documents) {
@@ -104,7 +110,6 @@ class _HomePageState extends State<HomePage> {
                 pProductDuration: data[kProductDuration],
                 pPhone: data[kProductPhone],
                 pImage: data[kProductImage],
-                // pQuantity: data[kProductImage],
                 pPapers: data[kProductPapers],
                 pLatitude: data[kProductLatitude],
                 plongitude: data[kProductLongitude],
@@ -214,7 +219,7 @@ class _HomePageState extends State<HomePage> {
 /*
     
 */
-  /*
+/*
                   Stack(
                   children: <Widget>[
                     Positioned.fill(
@@ -251,5 +256,3 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 */
-
-                

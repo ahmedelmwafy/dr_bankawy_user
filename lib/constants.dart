@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 const kMainColor = Color(0xFF75D2DE);
 const kSecondaryColor = Color(0xFF4DBACA);
@@ -29,4 +29,7 @@ const kOrderDetails = 'OrderDetails';
 const kTotallPrice = 'TotallPrice';
 const kAddress = 'Address';
 const kProductQuantity = 'Quantity';
+
+// mobile cash storage
 const kKeepMeLoggedIn = 'KeepMeLoggedIn';
+const kKeepMyEmail = 'KeepMyEmail';

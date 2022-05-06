@@ -1,4 +1,5 @@
 // ignore_for_file: deprecated_member_use
+import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/signup_screen.dart';
 import 'package:dr_bankawy/screens/user/homePage.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
@@ -22,17 +23,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String _email, password;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   final _auth = Auth();
-
-  final adminPassword = 'Admin1234';
-
   bool keepMeLoggedIn = false;
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    UserData providerUserData = Provider.of<UserData>(context);
     return Scaffold(
       // appBar: AppBar(
 
@@ -65,18 +65,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: height * .1,
                       ),
                       CustomTextField(
-                        onClick: (value) {
-                          _email = value;
-                        },
+                        controller: emailController,
                         hint: 'البريد الإلكتروني',
                       ),
                       SizedBox(
                         height: height * .03,
                       ),
                       CustomTextField(
-                        onClick: (value) {
-                          password = value;
-                        },
+                        controller: passwordController,
                         hint: 'كلمة المرور',
                       ),
                       Padding(
@@ -118,6 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (keepMeLoggedIn == true) {
                                 keepUserLoggedIn();
                               }
+                              providerUserData
+                                  .addUserEmail(emailController.text);
                               _validate(context);
                             },
                             color: kSecondaryColor,
@@ -166,7 +164,8 @@ class _LoginScreenState extends State<LoginScreen> {
     if (widget.globalKey.currentState.validate()) {
       widget.globalKey.currentState.save();
       try {
-        await _auth.signIn(_email.trim(), password.trim());
+        await _auth.signIn(
+            emailController.text.trim(), passwordController.text.trim());
         Navigator.pushNamed(context, HomePage.id);
       } catch (e) {
         modelhud.changeisLoading(false);
@@ -188,6 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void keepUserLoggedIn() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setBool(kKeepMeLoggedIn, keepMeLoggedIn);
+    preferences.setString(kKeepMyEmail, emailController.text);
   }
 }
 /**/

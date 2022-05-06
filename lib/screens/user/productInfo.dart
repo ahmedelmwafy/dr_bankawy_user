@@ -3,9 +3,11 @@
 import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/order.dart';
 import 'package:dr_bankawy/models/product.dart';
+import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/services/store.dart';
 import 'package:dr_bankawy/widgets/map.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductInfo extends StatefulWidget {
   static String id = 'ProductInfo';
@@ -17,10 +19,11 @@ class ProductInfo extends StatefulWidget {
 
 class _ProductInfoState extends State<ProductInfo> {
   Store store = Store();
-
+  int orderCount = 0;
   @override
   Widget build(BuildContext context) {
     Product product = ModalRoute.of(context).settings.arguments;
+    String userEmail = Provider.of<UserData>(context).userEmail;
     return Scaffold(
       backgroundColor: kMainColor,
       body: ListView(
@@ -94,28 +97,9 @@ class _ProductInfoState extends State<ProductInfo> {
                       // fontSize: 16,
                       ),
                 ),
-                // Text(
-                //   "الضمان \n" + product.pProductDuration ?? "",
-                // ),
                 Text(
                   "الخط الساحن \n" + product.pPhone.toString() ?? "",
                 ),
-
-                // Text(
-                //   product.pDescription,
-                //   style: const TextStyle(
-                //     fontSize: 16,
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                // Text(
-                //   product.pPrice,
-                //   style: const TextStyle(
-                //     fontSize: 20,
-                //   ),
-                // ),
                 SizedBox(
                   height: 200,
                   child: MapSample(
@@ -134,16 +118,24 @@ class _ProductInfoState extends State<ProductInfo> {
                           borderRadius: BorderRadius.circular(20)),
                       color: kSecondaryColor,
                       onPressed: () {
-                        store.addOrder(Order(
-                          oUserEmail: "userEmail",
-                          oIsAccepted: false,
-                          oIsReviewed: false,
-                          oCreatedDate:
-                              DateTime.now().toUtc().millisecondsSinceEpoch,
-                        ));
-                        Scaffold.of(context).showSnackBar(const SnackBar(
-                          content: Text('لقدم تم التقديم مسبقا'),
-                        ));
+                        if (orderCount == 0) {
+                          store.addOrder(Order(
+                            documentId: product.pId,
+                            oUserEmail: userEmail.toLowerCase(),
+                            oIsAccepted: false,
+                            oIsReviewed: false,
+                            oCreatedDate:
+                                DateTime.now().toUtc().millisecondsSinceEpoch,
+                          ));
+                          orderCount = 1;
+                          Scaffold.of(context).showSnackBar(const SnackBar(
+                            content: Text('لقدم تم التقديم علي القرض'),
+                          ));
+                        } else {
+                          Scaffold.of(context).showSnackBar(const SnackBar(
+                            content: Text('لقدم تم التقديم مسبقا'),
+                          ));
+                        }
                       },
                       child: const Text(
                         'قم بالتقديم علي القرض',

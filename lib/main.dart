@@ -2,6 +2,7 @@ import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/provider/adminMode.dart';
 import 'package:dr_bankawy/provider/cartItem.dart';
 import 'package:dr_bankawy/provider/modelHud.dart';
+import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/login_screen.dart';
 import 'package:dr_bankawy/screens/signup_screen.dart';
 import 'package:dr_bankawy/screens/user/cartScreen.dart';
@@ -20,7 +21,6 @@ void main() async {
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   bool isUserLoggedIn = false;
-
   MyApp({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,12 @@ class MyApp extends StatelessWidget {
           );
         } else {
           isUserLoggedIn = snapshot.data.getBool(kKeepMeLoggedIn) ?? false;
+
           return MultiProvider(
             providers: [
+              ChangeNotifierProvider<UserData>(
+                create: (context) => UserData(),
+              ),
               ChangeNotifierProvider<ModelHud>(
                 create: (context) => ModelHud(),
               ),

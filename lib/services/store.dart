@@ -14,16 +14,17 @@ class Store {
       kProductCategory: product.pCategory,
       kProductPrice: product.pPrice
     });
-  } 
-  
-    addOrder(Order product) {
+  }
+
+  addOrder(Order product) {
     _firestore.collection(kOrders).add({
+      kProductId: product.documentId,
       kUserEmail: product.oUserEmail,
       kisAccepted: product.oIsAccepted,
       kisReviewed: product.oIsReviewed,
       kCreatedDate: product.oCreatedDate
     });
-  } 
+  }
 
   Stream<QuerySnapshot> loadProducts() {
     return _firestore.collection(kProductsCollection).snapshots();

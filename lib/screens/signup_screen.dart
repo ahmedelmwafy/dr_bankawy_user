@@ -14,7 +14,11 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 class SignupScreen extends StatelessWidget {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   static String id = 'SignupScreen';
-  String _email, _password;
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   final _auth = Auth();
 
   SignupScreen({Key key}) : super(key: key);
@@ -48,25 +52,21 @@ class SignupScreen extends StatelessWidget {
                       height: height * .05,
                     ),
                     CustomTextField(
-                      onClick: (value) {},
+                      controller: usernameController,
                       hint: 'اسم المستخدم',
                     ),
                     SizedBox(
                       height: height * .02,
                     ),
                     CustomTextField(
-                      onClick: (value) {
-                        _email = value;
-                      },
+                      controller: emailController,
                       hint: 'البريد الالكتروني',
                     ),
                     SizedBox(
                       height: height * .02,
                     ),
                     CustomTextField(
-                      onClick: (value) {
-                        _password = value;
-                      },
+                      controller: passwordController,
                       hint: 'كلمة المرور',
                     ),
                     SizedBox(
@@ -86,7 +86,8 @@ class SignupScreen extends StatelessWidget {
                               _globalKey.currentState.save();
                               try {
                                 final authResult = await _auth.signUp(
-                                    _email.trim(), _password.trim());
+                                    emailController.text.trim(),
+                                    passwordController.text.trim());
                                 modelhud.changeisLoading(false);
                                 Navigator.pushNamed(context, HomePage.id);
                               } on PlatformException catch (e) {
