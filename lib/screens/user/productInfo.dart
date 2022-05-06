@@ -8,6 +8,7 @@ import 'package:dr_bankawy/services/store.dart';
 import 'package:dr_bankawy/widgets/map.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductInfo extends StatefulWidget {
   static String id = 'ProductInfo';
@@ -25,6 +26,12 @@ class _ProductInfoState extends State<ProductInfo> {
     Product product = ModalRoute.of(context).settings.arguments;
     String userEmail = Provider.of<UserData>(context).userEmail;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: kMainColor,
+          child: const Icon(Icons.call),
+          onPressed: () {
+            launch(('tel://${product.pPhone}'));
+          }),
       backgroundColor: kMainColor,
       body: ListView(
         padding: const EdgeInsets.all(20),

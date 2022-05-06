@@ -3,7 +3,7 @@
 import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/provider/userLoginData.dart';
-import 'package:dr_bankawy/screens/login_screen.dart';
+import 'package:dr_bankawy/screens/drawer/view.dart';
 import 'package:dr_bankawy/screens/user/CartScreen.dart';
 import 'package:dr_bankawy/screens/user/productInfo.dart';
 import 'package:dr_bankawy/services/store.dart';
@@ -45,40 +45,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
           ),
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('About'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('Contact'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('Logout'),
-                onTap: () async {
-                  SharedPreferences pref =
-                      await SharedPreferences.getInstance();
-                  pref.clear();
-                  await _auth.signOut();
-                  Navigator.popAndPushNamed(context, LoginScreen.id);
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: MyDrawer(),
         body: homePage());
   }
 
@@ -145,6 +112,7 @@ class _HomePageState extends State<HomePage> {
                     const Text("الرئيسية"),
                     const CircleAvatar(
                       radius: 25,
+                      backgroundColor: Colors.transparent,
                       backgroundImage: AssetImage("images/icons/buyicon.png"),
                     ),
                   ],

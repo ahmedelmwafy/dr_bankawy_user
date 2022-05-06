@@ -3,11 +3,12 @@ import 'package:dr_bankawy/provider/adminMode.dart';
 import 'package:dr_bankawy/provider/cartItem.dart';
 import 'package:dr_bankawy/provider/modelHud.dart';
 import 'package:dr_bankawy/provider/userLoginData.dart';
-import 'package:dr_bankawy/screens/login_screen.dart';
-import 'package:dr_bankawy/screens/signup_screen.dart';
+import 'package:dr_bankawy/screens/login/login_screen.dart';
+import 'package:dr_bankawy/screens/sign_up/signup_screen.dart';
 import 'package:dr_bankawy/screens/user/cartScreen.dart';
 import 'package:dr_bankawy/screens/user/homePage.dart';
 import 'package:dr_bankawy/screens/user/productInfo.dart';
+import 'package:dr_bankawy/widgets/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,12 +31,13 @@ class MyApp extends StatelessWidget {
         if (!snapshot.hasData) {
           return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: Scaffold(
-              body: Center(
-                child: Text('Loading....'),
-              ),
-            ),
-          );
+            home: CustomLoading());
+          //   Scaffold(
+          //     body: Center(
+          //       child: Text('Loading....'),
+          //     ),
+          //   ),
+          // );
         } else {
           isUserLoggedIn = snapshot.data.getBool(kKeepMeLoggedIn) ?? false;
 

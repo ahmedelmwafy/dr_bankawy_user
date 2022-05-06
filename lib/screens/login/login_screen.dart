@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 import 'package:dr_bankawy/provider/userLoginData.dart';
-import 'package:dr_bankawy/screens/signup_screen.dart';
+import 'package:dr_bankawy/screens/sign_up/signup_screen.dart';
 import 'package:dr_bankawy/screens/user/homePage.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
 import 'package:dr_bankawy/widgets/cutsom_logo.dart';

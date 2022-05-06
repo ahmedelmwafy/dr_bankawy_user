@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hint;
   final TextEditingController controller;
-  String _errorMessage(String str) {
+  String errorMessage(String str) {
     switch (hint) {
       case 'Enter your name':
         return 'Name is empty !';
@@ -26,7 +26,7 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: TextFormField(
         controller: controller,
-        obscureText: hint == 'Enter your password' ? true : false,
+        obscureText: hint == 'كلمة المرور' ? true : false,
         cursorColor: kThiredColor,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(2),

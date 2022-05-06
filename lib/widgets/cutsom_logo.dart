@@ -11,6 +11,7 @@ class CustomLogo extends StatelessWidget {
       child: Column(
         children: const [
           Image(
+            height: 100,
             image: AssetImage('images/icons/buyicon.png'),
           ),
           Text(

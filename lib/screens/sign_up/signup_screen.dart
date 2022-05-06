@@ -7,7 +7,7 @@ import 'package:dr_bankawy/widgets/cutsom_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import '../constants.dart';
+import '../../constants.dart';
 import 'package:dr_bankawy/services/auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
