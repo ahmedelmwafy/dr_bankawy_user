@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../login/login_screen.dart';
 
+// ignore: must_be_immutable
 class MyDrawer extends StatelessWidget {
   MyDrawer({Key key}) : super(key: key);
   Auth auth = Auth();

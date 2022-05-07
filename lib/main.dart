@@ -5,7 +5,7 @@ import 'package:dr_bankawy/provider/modelHud.dart';
 import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/login/login_screen.dart';
 import 'package:dr_bankawy/screens/sign_up/signup_screen.dart';
-import 'package:dr_bankawy/screens/user/cart/cartScreen.dart';
+import 'package:dr_bankawy/screens/user/cart/notificationsScreen.dart';
 import 'package:dr_bankawy/screens/user/home/homePage.dart';
 import 'package:dr_bankawy/screens/user/product/productInfo.dart';
 import 'package:dr_bankawy/widgets/splash.dart';
@@ -30,8 +30,7 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: CustomLoading());
+              debugShowCheckedModeBanner: false, home: CustomLoading());
           //   Scaffold(
           //     body: Center(
           //       child: Text('Loading....'),
@@ -60,7 +59,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               initialRoute: isUserLoggedIn ? HomePage.id : LoginScreen.id,
               routes: {
-                CartScreen.id: (context) => const CartScreen(),
+                NotificationsScreen.id: (context) => NotificationsScreen(),
                 ProductInfo.id: (context) => const ProductInfo(),
                 LoginScreen.id: (context) => LoginScreen(),
                 SignupScreen.id: (context) => SignupScreen(),

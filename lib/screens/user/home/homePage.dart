@@ -4,7 +4,6 @@ import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/drawer/view.dart';
-import 'package:dr_bankawy/screens/user/CartScreen.dart';
 import 'package:dr_bankawy/screens/user/product/productInfo.dart';
 import 'package:dr_bankawy/services/store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../functions.dart';
+import '../cart/notificationsScreen.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'HomePage';
@@ -35,14 +35,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           elevation: 0,
           onPressed: () {
-            Navigator.pushNamed(context, CartScreen.id);
+            Navigator.pushNamed(context, NotificationsScreen.id);
           },
           child: const Icon(
             Icons.notifications_rounded,
-            color: Colors.white,
+            color: kMainColor,
           ),
         ),
         drawer: MyDrawer(),
@@ -58,13 +58,13 @@ class _HomePageState extends State<HomePage> {
     _loggedUser = await _auth.getUser();
     SharedPreferences pref = await SharedPreferences.getInstance();
     userEmail = _loggedUser.email ?? pref.getString(kKeepMyEmail);
+    Provider.of<UserData>(context, listen: false).addUserEmail(userEmail);
   }
 
   Widget homePage() {
     return StreamBuilder<QuerySnapshot>(
       stream: _store.loadProducts(),
       builder: (context, snapshot) {
-        Provider.of<UserData>(context).addUserEmail(userEmail);
         if (snapshot.hasData) {
           List<Product> products = [];
           for (var doc in snapshot.data.documents) {
