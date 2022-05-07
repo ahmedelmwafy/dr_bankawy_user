@@ -13,7 +13,7 @@ import '../../../provider/userLoginData.dart';
 class NotificationsScreen extends StatefulWidget {
   static String id = 'NotificationsScreen';
 
-  NotificationsScreen({Key key}) : super(key: key);
+  const NotificationsScreen({Key key}) : super(key: key);
 
   @override
   State<NotificationsScreen> createState() => _NotificationsScreenState();

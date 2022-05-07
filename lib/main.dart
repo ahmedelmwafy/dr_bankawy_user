@@ -5,7 +5,7 @@ import 'package:dr_bankawy/provider/modelHud.dart';
 import 'package:dr_bankawy/provider/userLoginData.dart';
 import 'package:dr_bankawy/screens/login/login_screen.dart';
 import 'package:dr_bankawy/screens/sign_up/signup_screen.dart';
-import 'package:dr_bankawy/screens/user/cart/notificationsScreen.dart';
+import 'package:dr_bankawy/screens/user/notifications/notificationsScreen.dart';
 import 'package:dr_bankawy/screens/user/home/homePage.dart';
 import 'package:dr_bankawy/screens/user/product/productInfo.dart';
 import 'package:dr_bankawy/widgets/splash.dart';
