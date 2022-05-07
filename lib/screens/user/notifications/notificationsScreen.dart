@@ -74,14 +74,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 Container(
                     padding: const EdgeInsets.all(10),
                     width: double.infinity,
-                    margin: EdgeInsets.only(top: 40, left: 20, right: 20),
+                    margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
                     decoration: BoxDecoration(
                       color: kThiredColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
+                    child: const Text(
                       " حالة الطلب",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style:  TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     )),
                 Expanded(
@@ -91,7 +91,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       //     ? false
                       //     : true,
                       child: Container(
-                        margin: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           
                           color: finalOrderList[index].oIsReviewed

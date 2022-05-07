@@ -16,7 +16,7 @@ const kProductPapers = 'productPapers';
 const kProductCategory = 'productCategory';
 const kProductsCollection = 'Products';
 const kUnActiveColor = Color(0xFFC1BDB8);
-const kJackets = 'jackets';
+const kloan = 'loan';
 const kOrders = 'Orders';
 // for orders
 const kProductId = 'product_id';

@@ -88,24 +88,21 @@ class _ProductInfoState extends State<ProductInfo> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Text(
-                  "معلومات عن القرض",
+                  "معلومات عن القرض\n",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200),
                 ),
                 Text(
-                  "الفائدة ${product.pDescription}",
+                  "الفائدة ${product.pDescription}\n",
                 ),
-                Text("الفائدة :" + product.pPrice + " %" ?? ""),
+                Text("الفائدة :" + product.pPrice + " % \n" ?? ""),
                 const Text(
-                  "الضمان : تحويل موتبة",
+                  "الضمان : تحويل موتبة\n",
                 ),
                 Text(
-                  "الاوراق المطلوبه" "\n" + product.pPapers ?? "",
-                  style: const TextStyle(
-                      // fontSize: 16,
-                      ),
+                  "الاوراق المطلوبه" "\n" "\n" + product.pPapers ?? "",
                 ),
                 Text(
-                  "الخط الساحن \n" + product.pPhone.toString() ?? "",
+                  "\nالخط الساحن \n" + product.pPhone.toString() ?? "",
                 ),
                 SizedBox(
                   height: 200,
@@ -120,39 +117,125 @@ class _ProductInfoState extends State<ProductInfo> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Builder(
-                    builder: (context) => RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      color: kSecondaryColor,
-                      onPressed: () {
-                        if (orderCount == 0) {
-                          store.addOrder(Order(
-                            documentId: product.pId,
-                            oUserEmail: userEmail.toLowerCase(),
-                            oIsAccepted: false,
-                            oIsReviewed: false,
-                            oCreatedDate:
-                                DateTime.now().toUtc().millisecondsSinceEpoch,
-                          ));
-                          orderCount = 1;
-                          Scaffold.of(context).showSnackBar(const SnackBar(
-                            content: Text('لقدم تم التقديم علي القرض'),
-                          ));
-                        } else {
-                          Scaffold.of(context).showSnackBar(const SnackBar(
-                            content: Text('لقدم تم التقديم مسبقا'),
-                          ));
-                        }
-                      },
-                      child: const Text(
-                        'قم بالتقديم علي القرض',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: kThiredColor),
-                      ),
-                    ),
-                  ),
+                      builder: (context) => RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          color: kSecondaryColor,
+                          onPressed: () {
+                            showDialog<void>(
+                              context: context,
+                              barrierDismissible:
+                                  false, // user must tap button!
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                    content: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white),
+                                  height: 250,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Image.asset("images/icons/alert.png"),
+                                      const Text(
+                                        "هل انت متاكد من التقديم علي القرض؟",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const Text("للتاكيد اضغط : نعم"),
+                                      const Text("للرفض اضغط لا"),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Container(
+                                                width: 80,
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                decoration: BoxDecoration(
+                                                    color: Colors.blueAccent,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
+                                                child: const Center(
+                                                  child: Text(
+                                                    "نعم",
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                )),
+                                          ),
+                                          Builder(
+                                            builder: (v) => GestureDetector(
+                                              onTap: () {
+                                                // Navigator.pop(context);
+                                                if (orderCount == 0) {
+                                                  store.addOrder(Order(
+                                                    documentId: product.pId,
+                                                    oUserEmail:
+                                                        userEmail.toLowerCase(),
+                                                    oIsAccepted: false,
+                                                    oIsReviewed: false,
+                                                    oCreatedDate: DateTime.now()
+                                                        .toUtc()
+                                                        .millisecondsSinceEpoch,
+                                                  ));
+                                                  orderCount = 1;
+                                                  Scaffold.of(v).showSnackBar(
+                                                      const SnackBar(
+                                                    content: Text(
+                                                        'لقدم تم التقديم علي القرض'),
+                                                  ));
+                                                } else {
+                                                  Scaffold.of(v).showSnackBar(
+                                                      const SnackBar(
+                                                    content: Text(
+                                                        'لقدم تم التقديم مسبقا'),
+                                                  ));
+                                                }
+                                              },
+                                              child: Container(
+                                                  width: 80,
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.blueAccent,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20)),
+                                                  child: const Center(
+                                                    child: Text(
+                                                      "لا",
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
+                                                  )),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ));
+                              },
+                            );
+                          },
+                          child: const Text(
+                            'قم بالتقديم علي القرض',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: kThiredColor),
+                          ))),
                 )
               ],
             ),
@@ -162,3 +245,105 @@ class _ProductInfoState extends State<ProductInfo> {
     );
   }
 }
+/*
+
+
+                      
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const AlertyApp());
+}
+
+class AlertyApp extends StatelessWidget {
+  const AlertyApp({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: TextButton(
+            onPressed: () {
+              showDialog<void>(
+                context: context,
+                barrierDismissible: false, // user must tap button!
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                      content: Container(
+                    width: 200,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white),
+                    height: 200,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.network(
+                            "https://www.pngmart.com/files/8/Exclamation-Mark-PNG-Photos.png"),
+                        const Text("هل انت متاكد من التقديم علي القرض؟"),
+                        const Text("للتاكيد اضغط : نعم"),
+                        const Text("للرفض اضغط لا"),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                  width: 100,
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Center(
+                                    child: Text(
+                                      "لا",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  )),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                  width: 100,
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Center(
+                                    child: Text(
+                                      "نعم",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ));
+                },
+              );
+            },
+            child: const Text("Show Diolog")),
+      ),
+    );
+  }
+}
+*/

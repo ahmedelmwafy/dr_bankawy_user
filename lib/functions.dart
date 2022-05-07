@@ -2,11 +2,11 @@
 
 import 'models/product.dart';
 
-List<Product> getProductByCategory(String kJackets, List<Product> allproducts) {
+List<Product> getProductByCategory(String kloan, List<Product> allproducts) {
   List<Product> products = [];
   try {
     for (var product in allproducts) {
-      if (product.pCategory == kJackets) {
+      if (product.pCategory == kloan) {
         products.add(product);
       }
     }

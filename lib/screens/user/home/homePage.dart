@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
 
           _products = [...products];
           products.clear();
-          products = getProductByCategory(kJackets, _products);
+          products = getProductByCategory(kloan, _products);
           return Column(
             children: [
               const SizedBox(

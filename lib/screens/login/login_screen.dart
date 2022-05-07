@@ -102,10 +102,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: height * .05,
+                        height: height * .01,
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Builder(
                           builder: (context) => FlatButton(
                             shape: RoundedRectangleBorder(
@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: height * .05,
+                        height: height * .01,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -190,4 +190,78 @@ class _LoginScreenState extends State<LoginScreen> {
     preferences.setString(kKeepMyEmail, emailController.text);
   }
 }
-/**/
+/*
+SizedBox.expand(
+          child: Container(
+              child: Stack(alignment: Alignment.bottomCenter, children: [
+        Image.asset(
+          "assets/images/1.png",
+          fit: BoxFit.fill,
+          height: MediaQuery.of(context).size.height,
+        ),
+    SlideInUp(
+                duration: Duration(seconds: 2),
+
+            child: Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height / 2-20,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  )),
+              child: Form(
+                key: formKey,
+                child: ListView(
+                  // controller: scrollController,
+                  children: [
+                    Padding(
+                      child: paddingText('اعادة تعيين كلمة السر'),
+                      padding: EdgeInsets.only(
+                        top: 0,
+                      ),
+                    ),
+                    customTextField(
+                        hintText: "كلمة السر الجديدة",
+                        obscure: true,
+                        validator: (value) {
+                          if (value.trim().isEmpty) {
+                            return 'من فضلك قم بادخال السر الجديدة';
+                          }
+                        },
+                        labelText: "كلمة السر الجديدة"),
+                    customTextField(
+                        validator: (value) {
+                          if (value.trim().isEmpty) {
+                            return 'من فضلك قم بادخال السر الجديدة';
+                          }
+                        },
+                        hintText: "تأكيد كلمة السر الجديدة ",
+                        obscure: true,
+                        labelText: "تأكيد كلمة السر الجديدة"),
+                    Container(
+                      margin: EdgeInsets.only(top: 20),
+                      child: Center(
+                        child: CustomButton(
+                          text: "جاهز",
+                          color: kPrimaryColor,
+                          page: () {
+                                if (!formKey.currentState.validate()) {
+                                    return;
+                                  }
+                            Get.to(ActiveCodeForgetPassword());
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          
+        )
+      ]))),
+    );
+  }
+*/

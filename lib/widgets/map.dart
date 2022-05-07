@@ -14,18 +14,7 @@ class MapSample extends StatefulWidget {
 
 class MapSampleState extends State<MapSample> {
   final Completer<GoogleMapController> _controller = Completer();
-
-  // ignore: prefer_const_constructors
-  // static final CameraPosition _kGooglePlex = CameraPosition(
-  //   target: const LatLng(37.42796133580664, -122.085749655962),
-  //   zoom: 14.4746,
-  // );
-
-  // static  final CameraPosition _kLake = CameraPosition(
-  //     bearing: 192.8334901395799,
-  //     target: LatLng(widget.latLng,widget.long),
-  //     tilt: 59.440717697143555,
-  //     zoom: 19.151926040649414);
+  final Set<Marker> markers = {};
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +22,7 @@ class MapSampleState extends State<MapSample> {
       children: [
         Expanded(
           child: GoogleMap(
+            markers: myMarker(),
             mapType: MapType.terrain,
             initialCameraPosition: CameraPosition(
                 zoom: 19.151926040649414,
@@ -51,8 +41,20 @@ class MapSampleState extends State<MapSample> {
     );
   }
 
-  // Future<void> _goToTheLake() async {
-  //   final GoogleMapController controller = await _controller.future;
-  //   controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  // }
+  Set<Marker> myMarker() {
+    setState(() {
+      markers.add(Marker(
+        // This marker id can be anything that uniquely identifies each marker.
+        markerId: MarkerId(LatLng(widget.latLng, widget.long).toString()),
+        position: LatLng(widget.latLng, widget.long),
+        infoWindow: const InfoWindow(
+          title: 'Work Space',
+          snippet: 'Beautiful Choice',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+      ));
+    });
+
+    return markers;
+  }
 }
