@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 import '../functions.dart';
 
-Widget ProductsView(String pCategory, List<Product> allProducts) {
+Widget ProductsView(List<Product> allProducts) {
   List<Product> products;
-  products = getProductByCategory(pCategory, allProducts);
+  products = getProductByCategory(allProducts);
   return GridView.builder(
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 2,

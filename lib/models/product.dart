@@ -3,7 +3,6 @@ class Product {
   String pPrice;
   String pImage;
   String pDescription;
-  String pCategory;
   String pId;
   int pQuantity;
   int pPhone;
@@ -16,7 +15,6 @@ class Product {
       this.pId,
       this.pName,
       this.pPhone,
-      this.pCategory,
       this.pPapers,
       this.pDescription,
       this.pProductDuration,

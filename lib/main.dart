@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const MaterialApp(
-              debugShowCheckedModeBanner: false, home: CustomLoading());
+            debugShowCheckedModeBanner: false,
+            home: CustomLoading(),
+          );
           //   Scaffold(
           //     body: Center(
           //       child: Text('Loading....'),
@@ -59,17 +61,19 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               initialRoute: isUserLoggedIn ? HomePage.id : LoginScreen.id,
               routes: {
-                NotificationsScreen.id: (context) => NotificationsScreen(),
+                NotificationsScreen.id: (context) =>
+                    const NotificationsScreen(),
                 ProductInfo.id: (context) => const ProductInfo(),
                 LoginScreen.id: (context) => LoginScreen(),
                 SignupScreen.id: (context) => SignupScreen(),
                 HomePage.id: (context) => const HomePage(),
               },
               theme: ThemeData(
-                  fontFamily: 'Tajawal-Regular',
-                  scaffoldBackgroundColor: kMainColor,
-                  appBarTheme: const AppBarTheme(
-                      backgroundColor: Colors.transparent, elevation: 0)),
+                fontFamily: 'Tajawal-Regular',
+                scaffoldBackgroundColor: kMainColor,
+                appBarTheme: const AppBarTheme(
+                    backgroundColor: Colors.transparent, elevation: 0),
+              ),
               builder: (context, child) {
                 return Directionality(
                     textDirection: TextDirection.rtl, child: child);

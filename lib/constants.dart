@@ -16,7 +16,10 @@ const kProductPapers = 'productPapers';
 const kProductCategory = 'productCategory';
 const kProductsCollection = 'Products';
 const kUnActiveColor = Color(0xFFC1BDB8);
+<<<<<<< HEAD
+=======
 const kloan = 'loan';
+>>>>>>> f706beba53f9b58f8b81ece9f2e0440dc6240389
 const kOrders = 'Orders';
 // for orders
 const kProductId = 'product_id';

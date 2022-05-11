@@ -34,19 +34,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          onPressed: () {
-            Navigator.pushNamed(context, NotificationsScreen.id);
-          },
-          child: const Icon(
-            Icons.notifications_rounded,
-            color: kMainColor,
-          ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        onPressed: () {
+          Navigator.pushNamed(context, NotificationsScreen.id);
+        },
+        child: const Icon(
+          Icons.notifications_rounded,
+          color: kMainColor,
         ),
-        drawer: MyDrawer(),
-        body: homePage());
+      ),
+      drawer: MyDrawer(),
+      body: homePage(),
+    );
   }
 
   @override
@@ -79,13 +80,16 @@ class _HomePageState extends State<HomePage> {
                 pImage: data[kProductImage],
                 pPapers: data[kProductPapers],
                 pLatitude: data[kProductLatitude],
-                plongitude: data[kProductLongitude],
-                pCategory: data[kProductCategory]));
+                plongitude: data[kProductLongitude]));
           }
 
           _products = [...products];
           products.clear();
+<<<<<<< HEAD
+          products = getProductByCategory(_products);
+=======
           products = getProductByCategory(kloan, _products);
+>>>>>>> f706beba53f9b58f8b81ece9f2e0440dc6240389
           return Column(
             children: [
               const SizedBox(
@@ -143,9 +147,17 @@ class _HomePageState extends State<HomePage> {
                                 // mainAxisAlignment:
                                 //     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(products[index].pName ?? ""),
-                                  Text(
-                                    products[index].pDescription ?? "",
+                                  SizedBox(
+                                      width: 200,
+                                      height: 30,
+                                      child: Text(products[index].pName ?? "")),
+                                  SizedBox(
+                                    width: 200,
+                                    height: 30,
+                                    child: Text(
+                                      products[index].pDescription ?? "",
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
                                   Text("الفائدة :" +
                                           products[index].pPrice +

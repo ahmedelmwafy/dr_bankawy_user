@@ -11,7 +11,6 @@ class Store {
       kProductName: product.pName,
       kProductDescription: product.pDescription,
       kProductImage: product.pImage,
-      kProductCategory: product.pCategory,
       kProductPrice: product.pPrice
     });
   }
@@ -61,8 +60,7 @@ class Store {
         kProductName: product.pName,
         kProductPrice: product.pPrice,
         kProductQuantity: product.pQuantity,
-        kProductImage: product.pImage,
-        kProductCategory: product.pCategory
+        kProductImage: product.pImage
       });
     }
   }

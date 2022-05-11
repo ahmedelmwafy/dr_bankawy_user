@@ -93,7 +93,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       child: Container(
                         margin: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          
                           color: finalOrderList[index].oIsReviewed
                               ? finalOrderList[index].oIsAccepted
                                   ? const Color.fromARGB(255, 24, 255, 71)

@@ -55,14 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Container(
                   decoration: const BoxDecoration(
-                      color: kMainColor,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20))),
+                    color: kMainColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
                   child: Column(
                     children: [
                       SizedBox(
-                        height: height * .1,
+                        height: height * 0.1,
                       ),
                       CustomTextField(
                         controller: emailController,
@@ -109,7 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Builder(
                           builder: (context) => FlatButton(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                             onPressed: () {
                               if (keepMeLoggedIn == true) {
                                 keepUserLoggedIn();
