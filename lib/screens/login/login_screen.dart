@@ -34,10 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     double height = MediaQuery.of(context).size.height;
     UserData providerUserData = Provider.of<UserData>(context);
     return Scaffold(
-      // appBar: AppBar(
-
-      // ),
-      backgroundColor: kThiredColor,
+      backgroundColor: kMainColor,
       body: ModalProgressHUD(
         inAsyncCall: Provider.of<ModelHud>(context).isLoading,
         child: Form(
@@ -50,9 +47,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: height * 0.1,
                 ),
                 const CustomLogo(),
-                SizedBox(
-                  height: height * 0.1,
-                ),
+                // SizedBox(
+                //   height: height * 0.1,
+                // ),
                 Container(
                   decoration: const BoxDecoration(
                     color: kMainColor,

@@ -26,7 +26,7 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: kThiredColor,
+      backgroundColor: kMainColor,
       body: ModalProgressHUD(
         inAsyncCall: Provider.of<ModelHud>(context).isLoading,
         child: Form(
@@ -37,9 +37,9 @@ class SignupScreen extends StatelessWidget {
                 height: height * 0.1,
               ),
               const CustomLogo(),
-              SizedBox(
-                height: height * 0.1,
-              ),
+              // SizedBox(
+              //   height: height * 0.1,
+              // ),
               Container(
                 decoration: const BoxDecoration(
                     color: kMainColor,

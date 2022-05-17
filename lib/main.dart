@@ -13,9 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -29,16 +28,14 @@ class MyApp extends StatelessWidget {
       future: SharedPreferences.getInstance(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const MaterialApp(
-            debugShowCheckedModeBanner: false,
+          return MaterialApp(
+            title: "Dr Bankawy",
+            theme: ThemeData(
+              fontFamily: "fonts/Tajawal-Regular.ttf",
+            ),
+            // debugShowCheckedModeBanner: false,
             home: CustomLoading(),
           );
-          //   Scaffold(
-          //     body: Center(
-          //       child: Text('Loading....'),
-          //     ),
-          //   ),
-          // );
         } else {
           isUserLoggedIn = snapshot.data.getBool(kKeepMeLoggedIn) ?? false;
 

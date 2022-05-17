@@ -56,7 +56,9 @@ class _ProductInfoState extends State<ProductInfo> {
                       Text(
                         product.pName,
                       ),
-                      Text(product.pDescription),
+                      Text(product.pDescription.length > 11
+                          ? product.pDescription.substring(0, 10) + '...'
+                          : product.pDescription),
                       const Text("قرض شخصي"),
                     ],
                   ),
@@ -117,7 +119,6 @@ class _ProductInfoState extends State<ProductInfo> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Builder(
-<<<<<<< HEAD
                     builder: (context) => RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
@@ -216,127 +217,6 @@ class _ProductInfoState extends State<ProductInfo> {
                       ),
                     ),
                   ),
-=======
-                      builder: (context) => RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          color: kSecondaryColor,
-                          onPressed: () {
-                            showDialog<void>(
-                              context: context,
-                              barrierDismissible:
-                                  false, // user must tap button!
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                    content: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white),
-                                  height: 250,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Image.asset("images/icons/alert.png"),
-                                      const Text(
-                                        "هل انت متاكد من التقديم علي القرض؟",
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      const Text("للتاكيد اضغط : نعم"),
-                                      const Text("للرفض اضغط لا"),
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Container(
-                                                width: 80,
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                decoration: BoxDecoration(
-                                                    color: Colors.blueAccent,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20)),
-                                                child: const Center(
-                                                  child: Text(
-                                                    "نعم",
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  ),
-                                                )),
-                                          ),
-                                          Builder(
-                                            builder: (v) => GestureDetector(
-                                              onTap: () {
-                                                // Navigator.pop(context);
-                                                if (orderCount == 0) {
-                                                  store.addOrder(Order(
-                                                    documentId: product.pId,
-                                                    oUserEmail:
-                                                        userEmail.toLowerCase(),
-                                                    oIsAccepted: false,
-                                                    oIsReviewed: false,
-                                                    oCreatedDate: DateTime.now()
-                                                        .toUtc()
-                                                        .millisecondsSinceEpoch,
-                                                  ));
-                                                  orderCount = 1;
-                                                  Scaffold.of(v).showSnackBar(
-                                                      const SnackBar(
-                                                    content: Text(
-                                                        'لقدم تم التقديم علي القرض'),
-                                                  ));
-                                                } else {
-                                                  Scaffold.of(v).showSnackBar(
-                                                      const SnackBar(
-                                                    content: Text(
-                                                        'لقدم تم التقديم مسبقا'),
-                                                  ));
-                                                }
-                                              },
-                                              child: Container(
-                                                  width: 80,
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.blueAccent,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                  child: const Center(
-                                                    child: Text(
-                                                      "لا",
-                                                      style: TextStyle(
-                                                          color: Colors.white),
-                                                    ),
-                                                  )),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ));
-                              },
-                            );
-                          },
-                          child: const Text(
-                            'قم بالتقديم علي القرض',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: kThiredColor),
-                          ))),
->>>>>>> f706beba53f9b58f8b81ece9f2e0440dc6240389
                 )
               ],
             ),

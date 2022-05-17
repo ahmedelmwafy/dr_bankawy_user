@@ -27,9 +27,9 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         obscureText: hint == 'كلمة المرور' ? true : false,
-        cursorColor: kThiredColor,
+        cursorColor: Colors.black,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(2),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           hintText: hint,
           filled: true,
           fillColor: kThiredColor,

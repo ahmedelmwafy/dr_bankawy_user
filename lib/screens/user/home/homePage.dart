@@ -85,17 +85,14 @@ class _HomePageState extends State<HomePage> {
 
           _products = [...products];
           products.clear();
-<<<<<<< HEAD
           products = getProductByCategory(_products);
-=======
-          products = getProductByCategory(kloan, _products);
->>>>>>> f706beba53f9b58f8b81ece9f2e0440dc6240389
           return Column(
             children: [
               const SizedBox(
                 height: 50,
               ),
               Container(
+                // padding: const EdgeInsets.symmetric(horizontal: 20),
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   border: Border.all(color: kThiredColor),
@@ -113,7 +110,12 @@ class _HomePageState extends State<HomePage> {
                           Icons.menu,
                           color: kThiredColor,
                         )),
-                    const Text("الرئيسية"),
+                    const Text(
+                      "الرئيسية",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const CircleAvatar(
                       radius: 25,
                       backgroundColor: Colors.transparent,
@@ -155,8 +157,14 @@ class _HomePageState extends State<HomePage> {
                                     width: 200,
                                     height: 30,
                                     child: Text(
-                                      products[index].pDescription ?? "",
-                                      overflow: TextOverflow.ellipsis,
+                                      products[index].pDescription.length > 11
+                                ? products[index]
+                                        .pDescription
+                                        .substring(0, 10) +
+                                    '...'
+                                : products[index].pDescription
+                                      // products[index].pDescription ?? "",
+                                      // overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                   Text("الفائدة :" +

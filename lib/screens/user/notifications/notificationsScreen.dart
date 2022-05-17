@@ -81,9 +81,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     ),
                     child: const Text(
                       " حالة الطلب",
-                      style:  TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     )),
+                const Divider(
+                  color: kThiredColor,
+                  indent: 10,
+                  endIndent: 10,
+                ),
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) => Visibility(
@@ -97,7 +102,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               ? finalOrderList[index].oIsAccepted
                                   ? const Color.fromARGB(255, 24, 255, 71)
                                   : const Color.fromARGB(255, 255, 84, 71)
-                              : kSecondaryColor,
+                              : kThiredColor,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
