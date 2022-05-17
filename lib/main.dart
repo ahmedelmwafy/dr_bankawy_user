@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return MaterialApp(
-            title: "Dr Bankawy",
+            title: "Dr Bankawy User",
             theme: ThemeData(
               fontFamily: "fonts/Tajawal-Regular.ttf",
             ),
             // debugShowCheckedModeBanner: false,
-            home: CustomLoading(),
+            home: const CustomLoading(),
           );
         } else {
           isUserLoggedIn = snapshot.data.getBool(kKeepMeLoggedIn) ?? false;

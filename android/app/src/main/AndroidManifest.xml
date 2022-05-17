@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dr.bankaway">
    <application
-        android:label="dr_bankawy"
+        android:label="dr bankawy user"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
